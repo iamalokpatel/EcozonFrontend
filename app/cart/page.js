@@ -16,14 +16,13 @@ const CartPage = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCartItems(res.data.cart.items);
-      window.location.reload();
     } catch (error) {
       console.error("Error removing item:", error);
     }
   };
 
-  const handleGoToPlaceCartOrder = async (item) => {
-    if (item.length === 0) {
+  const handleGoToPlaceCartOrder = async () => {
+    if (cartItems.length === 0) {
       alert("Add a product to the cart before placing an order.");
       return;
     }
@@ -59,17 +58,45 @@ const CartPage = () => {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto p-4 mt-6 mb-6">
-      <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
-      {cartItems.map((item) => (
-        <CartItem key={item._id} item={item} onRemove={handleRemove} />
-      ))}
-      <button
-        onClick={handleGoToPlaceCartOrder}
-        className="bg-orange-500 text-white font-semibold w-full py-3 rounded-md hover:bg-orange-600 transition duration-200"
-      >
-        Place Order
-      </button>
+    <div className="max-w-5xl mx-auto px-4 py-10">
+      <h2 className="text-xl font-bold mb-8 text-center text-gray-500">
+        Your Shopping Cart
+      </h2>
+
+      {cartItems.length === 0 ? (
+        <div className="flex flex-col items-center justify-center text-center">
+          <img
+            src="/images/empty-cart.png"
+            alt="Empty Cart"
+            className="w-60 h-30 opacity-80 mb-6"
+          />
+
+          <p className="text-sm text-gray-600 mb-4 ">
+            Your Cart is Currently Empty
+          </p>
+          <button
+            onClick={() => router.push("/products")}
+            className="bg-blue-600 text-white px-12 py-3 rounded-md hover:bg-blue-700 transition"
+          >
+            Shop Products
+          </button>
+        </div>
+      ) : (
+        <>
+          <div className="space-y-4 mb-6">
+            {cartItems.map((item) => (
+              <CartItem key={item._id} item={item} onRemove={handleRemove} />
+            ))}
+          </div>
+
+          <button
+            onClick={handleGoToPlaceCartOrder}
+            className="bg-orange-500 text-white text-lg font-semibold w-full py-4 rounded-lg hover:bg-orange-600 transition duration-300"
+          >
+            🛍️ Place Order
+          </button>
+        </>
+      )}
     </div>
   );
 };

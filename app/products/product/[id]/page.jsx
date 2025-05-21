@@ -1,5 +1,4 @@
 "use client";
-import "./page.css";
 import api from "@/utils/api";
 import { useParams, useRouter } from "next/navigation";
 import React, { useState, useEffect } from "react";
@@ -50,7 +49,7 @@ const ProductDetail = () => {
         setProduct(response.data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching project:", error);
+        console.error("Error fetching product:", error);
         setLoading(false);
       }
     };
@@ -61,39 +60,56 @@ const ProductDetail = () => {
   }, [id]);
 
   if (loading)
-    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <p className="text-xl text-gray-500 animate-pulse">
+          Loading product...
+        </p>
+      </div>
+    );
+
   if (!product)
-    return <p className="text-center mt-10 text-red-500">Product not found!</p>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <p className="text-xl text-red-600 font-semibold">Product not found!</p>
+      </div>
+    );
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
-      <div className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg transition cursor-pointer">
+    <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start bg-white p-8 rounded-3xl shadow-2xl">
         <img
           src={product.image}
           alt={product.title}
-          className="w-full h-80 object-cover"
+          className="w-full h-96 object-cover rounded-2xl transition-transform duration-300 hover:scale-105"
         />
-        <div className="p-6 space-y-4">
-          <h1 className="text-2xl font-bold text-gray-800">{product.title}</h1>
-          <h2 className="text-xl text-gray-600">{product.subtitle}</h2>
-          <p className="text-gray-700 leading-relaxed">{product.description}</p>
-          <h3 className="text-xl font-semibold text-indigo-600">
-            ${product.price}
-          </h3>
 
-          <div>
+        <div className="space-y-6">
+          <h1 className="text-4xl font-bold text-gray-800">{product.title}</h1>
+          <h2 className="text-xl font-medium text-gray-500">
+            {product.subtitle}
+          </h2>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            {product.description}
+          </p>
+
+          <div className="text-3xl font-bold text-green-600">
+            ${product.price}
+          </div>
+
+          <div className="flex flex-wrap gap-4 mt-6">
             <button
               onClick={() => handleAddToCart(product._id)}
-              className="bg-yellow-500 text-white px-4 py-2 rounded"
+              className="px-6 py-3 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600 transition duration-300"
             >
-              Add to Cart
+              🛒 Add to Cart
             </button>
 
             <button
               onClick={() => handleBuy(product._id)}
-              className="bg-green-500 text-white px-4 py-2 rounded ml-2 z-10"
+              className="px-6 py-3 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition duration-300"
             >
-              Buy
+              💳 Buy Now
             </button>
           </div>
         </div>

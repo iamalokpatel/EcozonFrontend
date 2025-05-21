@@ -5,12 +5,13 @@ import api from "@/utils/api";
 
 const AddProducts = () => {
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("choose");
   const [subtitle, setSubtitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState("");
+  const [categoryError, setCategoryError] = useState("");
 
   const router = useRouter();
 
@@ -22,6 +23,15 @@ const AddProducts = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Reset error first
+    setCategoryError("");
+
+    // Validate category
+    if (!category || category === "choose") {
+      setCategoryError("Please select a valid category.");
+      return;
+    }
 
     if (!image) {
       alert("Please upload an image.");
@@ -68,22 +78,35 @@ const AddProducts = () => {
             placeholder="Product Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full p-2  border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="appearance-none w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-            required
-          >
-            <option value="mobile">Mobile</option>
-            <option value="laptop">Laptop</option>
-            <option value="airbuds">Airbuds</option>
-            <option value="fashion">Fashion</option>
-            <option value="electronic">Electronic</option>
-            <option value="others">Others</option>
-          </select>
+          <div>
+            <select
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
+                if (e.target.value !== "choose") setCategoryError("");
+              }}
+              className={`appearance-none w-full p-2 border ${
+                categoryError ? "border-red-500" : "border-gray-300"
+              } rounded-xl focus:outline-none focus:ring-2 ${
+                categoryError ? "focus:ring-red-500" : "focus:ring-blue-500"
+              } bg-white`}
+              required
+            >
+              <option value="choose">Choose Category</option>
+              <option value="mobile">Mobile</option>
+              <option value="laptop">Laptop</option>
+              <option value="airbuds">Airbuds</option>
+              <option value="fashion">Fashion</option>
+              <option value="electronic">Electronic</option>
+              <option value="others">Others</option>
+            </select>
+            {categoryError && (
+              <p className="text-red-500 text-sm mt-1">{categoryError}</p>
+            )}
+          </div>
           <input
             type="text"
             placeholder="Subtitle"
@@ -113,7 +136,7 @@ const AddProducts = () => {
             accept="image/*"
             onChange={handleImageChange}
             required
-            className="w-46 p-2 text-sm text-gray-700 border-gray-300 rounded-lg shadow-sm "
+            className="w-46 p-2 text-sm text-gray-700 border-gray-300 rounded-lg shadow-sm"
           />
           {preview && (
             <img
