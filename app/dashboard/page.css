@@ -1,0 +1,47 @@
+/* Dashboard Page Styles */
+.dashboard {
+  padding: 20px;
+  background-color: #f4f6f9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.btn-add-property {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-add-property:hover {
+  background-color: #0056b3;
+}
+
+.property-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.property-list p {
+  font-size: 1.1rem;
+  color: #555;
+}
