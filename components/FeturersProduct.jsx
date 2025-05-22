@@ -70,7 +70,7 @@ const FeaturedProducts = () => {
       >
         {products.map((product) => (
           <SwiperSlide key={product._id}>
-            <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300">
+            <div className="bg-white rounded-2xl center overflow-hidden shadow-md hover:shadow-xl transition duration-300">
               <FeaturesProjectCard key={product._id} product={product} />
             </div>
           </SwiperSlide>
