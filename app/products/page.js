@@ -28,10 +28,8 @@ export default function CategoryPage() {
       try {
         let res;
         if (!selected) {
-          // Fetch all products when no category selected
           res = await api.get("/products");
         } else {
-          // Fetch products filtered by category
           res = await api.get("/products/categories", {
             params: { category: selected.toLowerCase() },
           });
@@ -47,7 +45,6 @@ export default function CategoryPage() {
 
   return (
     <div className="max-w-7xl mx-auto p-6">
-      {/* Category Navbar */}
       <div className="flex flex-wrap gap-3 mb-8">
         <button
           onClick={() => setSelected("")}
@@ -75,7 +72,6 @@ export default function CategoryPage() {
         ))}
       </div>
 
-      {/* Product List */}
       {products.length === 0 ? (
         <p className="text-gray-500 text-center col-span-full">
           No products found in this category.

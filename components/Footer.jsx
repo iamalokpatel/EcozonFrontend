@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
         {/* Left Section */}
         <div className="md:w-1/2 space-y-2">
-          <h2 className="text-2xl font-bold text-gray-800">Real Estate App</h2>
+          <h2 className="text-2xl font-bold text-gray-800">Ecozon</h2>
           <p className="text-gray-600">
             Find your dream home with ease. Explore the best properties in the
             city.
@@ -38,7 +38,7 @@ const Footer = () => {
       </div>
 
       <div className="text-center mt-10 text-gray-500 text-sm">
-        &copy; {new Date().getFullYear()} Real Estate App. All rights reserved.
+        &copy; {new Date().getFullYear()} Ecozon . All rights reserved.
       </div>
     </footer>
   );
