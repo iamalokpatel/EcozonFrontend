@@ -6,17 +6,15 @@ import FeaturedProducts from "@/components/FeturersProduct";
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-100 py-12 px-4 sm:px-8 lg:px-16">
-      {/* Hero Section */}
       <section className="text-center mb-16">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-600 mb-4">
           Find Your Dream Home
         </h1>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-6">
-          Browse through our collection of stunning projects available for sale
-          or rent.
+          Browse through our collection of stunning products available for buy
         </p>
         <Link href="/products">
-          <button className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition duration-300">
+          <button className="inline-block cursor-pointer bg-blue-400 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition duration-300">
             Browse All Products
           </button>
         </Link>

@@ -102,14 +102,14 @@ const ProductDetail = () => {
               onClick={() => handleAddToCart(product._id)}
               className="px-6 py-3 bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600 transition duration-300"
             >
-              🛒 Add to Cart
+              Add to Cart
             </button>
 
             <button
               onClick={() => handleBuy(product._id)}
               className="px-6 py-3 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition duration-300"
             >
-              💳 Buy Now
+              Buy Now
             </button>
           </div>
         </div>

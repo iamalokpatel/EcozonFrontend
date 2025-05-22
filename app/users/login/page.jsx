@@ -15,12 +15,12 @@ const LoginPage = () => {
         email,
         password,
       });
-
       if (response.status === 200) {
         const { user, token } = response.data;
         localStorage.setItem("token", token);
         localStorage.setItem("userId", user._id);
         localStorage.setItem("userRole", user.role);
+        window.dispatchEvent(new Event("authChange"));
         if (user.role === "admin") {
           router.push("/dashboard");
         } else {

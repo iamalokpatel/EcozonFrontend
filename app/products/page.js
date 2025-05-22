@@ -7,6 +7,7 @@ export default function CategoryPage() {
   const [categories, setCategories] = useState([]);
   const [selected, setSelected] = useState("");
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true); // 👈 Loading state added
 
   // Fetch categories on first load
   useEffect(() => {
@@ -26,6 +27,7 @@ export default function CategoryPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
+        setLoading(true);
         let res;
         if (!selected) {
           res = await api.get("/products");
@@ -37,6 +39,8 @@ export default function CategoryPage() {
         setProducts(res.data);
       } catch (err) {
         console.error("Failed to load products", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -72,7 +76,11 @@ export default function CategoryPage() {
         ))}
       </div>
 
-      {products.length === 0 ? (
+      {loading ? (
+        <div className="flex justify-center py-10">
+          <div className="w-12 h-12 border-4 border-gray-500 border-dashed rounded-full animate-spin"></div>
+        </div>
+      ) : products.length === 0 ? (
         <p className="text-gray-500 text-center col-span-full">
           No products found in this category.
         </p>

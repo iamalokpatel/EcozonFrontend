@@ -13,7 +13,7 @@ const UserProfile = () => {
       const token = localStorage.getItem("token");
 
       if (!token) {
-        router.push("/login"); // redirect to login if no token
+        router.push("/login");
         return;
       }
       try {
