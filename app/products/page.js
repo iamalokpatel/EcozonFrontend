@@ -90,7 +90,7 @@ export default function CategoryPage() {
                   `${product.title}-${product.price}` ||
                   `fallback-${index}`
                 }
-                className="rounded p-4 transition"
+                className="rounded p-4 transition center flex justify-center"
               >
                 <ProjectCard key={product._id} product={product} />
               </div>
