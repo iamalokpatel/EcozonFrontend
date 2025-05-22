@@ -28,7 +28,7 @@ const ProjectCard = ({ product }) => {
         <img
           src={product.image}
           alt={product.title}
-          className="object-contain w-full h-full rounded-2xl"
+          className="object-contain w-full h-full rounded-2xl p-2"
         />
       </div>
       <div className="p-4 space-y-1">

@@ -32,7 +32,7 @@ const FeaturesProjectCard = ({ product }) => {
           <img
             src={product.image}
             alt={product.title}
-            className="object-contain w-full h-full rounded-3xl"
+            className="object-contain w-full h-full rounded-3xl p-2"
           />
         </div>
       </div>
