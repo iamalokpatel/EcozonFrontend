@@ -68,7 +68,7 @@ const EditProduct = ({ params }) => {
         },
       });
 
-      router.push(`/dashboard/products`);
+      router.push(`/products`);
     } catch (err) {
       console.error("Update Error:", err);
     }
