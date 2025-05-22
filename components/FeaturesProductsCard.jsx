@@ -28,17 +28,18 @@ const FeaturesProjectCard = ({ product }) => {
       className=" w-98 bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer "
     >
       <div className="bg-gray-100 flex-1 overflow-hidden">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="object-cover w-full h-80"
-        />
+        <div className="w-full h-60 bg-gray-100 rounded-2xl">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="object-contain w-full h-full rounded-3xl"
+          />
+        </div>
       </div>
       <div className="p-4 space-y-1">
         <h3 className="text-lg font-semibold text-gray-800 truncate">
           {product.title}
         </h3>
-        <p className="text-sm text-gray-600 truncate">{product.subtitle}</p>
         <p className="text-xs text-gray-500 line-clamp-2">
           {product.description}
         </p>

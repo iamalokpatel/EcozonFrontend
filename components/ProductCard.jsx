@@ -24,20 +24,19 @@ const ProjectCard = ({ product }) => {
       onClick={handleClick}
       className=" w-74 bg-white  rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer  "
     >
-      <div className="bg-gray-100 flex-1 overflow-hidden">
+      <div className="w-full h-50 bg-gray-100">
         <img
           src={product.image}
           alt={product.title}
-          className="object-cover w-full h-50"
+          className="object-contain w-full h-full rounded-2xl"
         />
       </div>
       <div className="p-4 space-y-1">
-        <h3 className="text-lg font-semibold text-gray-800 truncate">
+        <h3 className="text-sm font-semibold text-gray-800 truncate">
           {product.title}
         </h3>
-        <p className="text-sm text-gray-600 truncate">{product.subtitle}</p>
         <div className="flex">
-          <p className="mt-2 text-indigo-600 font-bold text-lg center">
+          <p className="mt-2 text-indigo-400 text-lg center">
             ₹{product.price}
           </p>
           <button
