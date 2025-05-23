@@ -26,7 +26,7 @@ const CartPage = () => {
       alert("Add a product to the cart before placing an order.");
       return;
     }
-    router.push("/placedOrders");
+    router.push("/buy?mode=cart");
   };
 
   useEffect(() => {
@@ -52,6 +52,7 @@ const CartPage = () => {
       const res = await api.get("/cart", {
         headers: { Authorization: `Bearer ${token}` },
       });
+      console.log(res.data);
       setCartItems(res.data.items);
     };
     fetchCart();

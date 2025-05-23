@@ -39,7 +39,7 @@ const ProductDetail = () => {
   };
 
   const handleBuy = (id) => {
-    router.push(`/buy/${id}`);
+    router.push("/buy?mode=single&productId=" + product._id);
   };
 
   useEffect(() => {
