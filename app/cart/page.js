@@ -52,7 +52,6 @@ const CartPage = () => {
       const res = await api.get("/cart", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(res.data);
       setCartItems(res.data.items);
     };
     fetchCart();
